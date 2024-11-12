@@ -1,39 +1,26 @@
 // @ts-check
 
-const { expect } = require("@playwright/test");
-const { chromium } = require('playwright');
-const { Given, When, Then, Before, After } = require('@cucumber/cucumber');
+import { expect } from "@playwright/test";
+import { Given, When, Then } from '@cucumber/cucumber';
 
-const { screen } = require('electron');
-import { timeout } from '../playwright.config';
-import { getPage } from './../config/setup'
-
-
-/*Before(async function () {
-    
-    browser = await chromium.launch({
-        channel: 'chrome',
-        headless: false
-    });
-    const context = await browser.newContext({
-        viewport: { width: 1500, height: 600 } // Esto permite el viewport completo de la ventana del navegador
-    });
-    page = await browser.newPage();
-})*/
+import { getPage } from '../config/setup'
+import { Page } from 'playwright';
 
 
 
 
 
-
+var page: Page = getPage();
 Given("ingreso a la url {string}", async function (url) {
 
     await getPage().goto(url, { waitUntil: "load", timeout: 60000 });
+
 })
 
 When("valido que estoy en la página principal", async function () {
-    const h1CucumberTitle = await getPage().locator("xpath=//h1[text()='Tools & techniques that elevate teams to greatness']")
-    await expect(h1CucumberTitle).toBeVisible();
+    const titulo = await getPage().locator("xpath=//h1[text()='Tools & techniques that elevate teams to greatness']")
+    await expect(titulo).toBeVisible();
+
 })
 
 When("busco {string}", async function (docs) {
