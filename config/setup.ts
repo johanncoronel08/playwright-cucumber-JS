@@ -1,33 +1,22 @@
+import { setWorldConstructor, World } from "@cucumber/cucumber";
 import { Browser, BrowserType, Page } from "@playwright/test";
+import CustomWorld from "./world";
+
 
 const { Before, After, AfterAll, BeforeAll } = require('@cucumber/cucumber');
 const { chromium } = require('playwright');
 
-let browser: Browser;
-let URL;
-let page: Page;
+setWorldConstructor(CustomWorld)
 
 
+Before(async function (this: CustomWorld) {
+    await this.init();
+    this.setPagesObjects();
 
-export function getPage(): Page {
-    return page;
-}
-
-Before(async function () {
-    /*const display = screen.getPrimaryDisplay();
-
-    var width = display.bounds.width;
-    var height = display.bounds.height;*/
-    browser = await chromium.launch({
-        channel: 'chrome',
-        headless: false
-    });
-    page = await browser.newPage();
 })
 
 
-After(async function () {
+After(async function (this: CustomWorld) {
 
-    await browser.close();  // Cierra el navegador
+    await this.browser!.close();  // Cierra el navegador
 });
-
