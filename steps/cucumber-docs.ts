@@ -19,7 +19,7 @@ When("busco {string}", async function (docs) {
     await this.cucumberPage.buscoSeccionDocs(docs)
 })
 
-Then("valido que estoy en Docs", async function () {
+Then("Valido que estoy en Docs", async function () {
     await this.cucumberPage.validoQueEstoyEnPantallaDocs();
 
 })

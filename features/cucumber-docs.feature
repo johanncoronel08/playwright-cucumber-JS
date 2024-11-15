@@ -5,4 +5,4 @@ Feature: Buscar en un sitio web
         Given ingreso a la url "https://cucumber.io/"
         When valido que estoy en la página principal
         And busco "Docs"
-        Then valido que estoy en Docs
+        Then Valido que estoy en Docs
