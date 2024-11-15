@@ -23,8 +23,3 @@ Then("valido que estoy en Docs", async function () {
     await this.cucumberPage.validoQueEstoyEnPantallaDocs();
 
 })
-
-/*After(async function (scenario) {
-
-    await browser.close();  // Cierra el navegador
-});*/

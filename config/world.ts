@@ -1,4 +1,4 @@
-import { setWorldConstructor, World } from "@cucumber/cucumber";
+import { World } from "@cucumber/cucumber";
 import { Browser, chromium, Page } from "@playwright/test";
 import { CucumberPage } from "../pages/CucumberPage";
 
