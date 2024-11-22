@@ -6,6 +6,7 @@ const { Before, After, AfterAll, BeforeAll } = require('@cucumber/cucumber');
 
 setWorldConstructor(CustomWorld)
 
+//Hooks Cucumber
 
 Before(async function (this: CustomWorld) {
     await this.init();

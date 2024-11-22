@@ -6,3 +6,4 @@ Feature: Buscar en un sitio web
         When valido que estoy en la página principal
         And busco "Docs"
         Then valido que estoy en Docs
+        And busco seccion "Reports"
