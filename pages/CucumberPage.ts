@@ -2,11 +2,16 @@ import { expect, Locator, Page } from "@playwright/test";
 
 export class CucumberPage {
 
+
+    // atributos 
+
     private page: Page;
     private h1_titulo: Locator;
     private link_api_docs: Locator;
     private h1_api_docs: Locator;
 
+
+    // constructor 
     constructor(page: Page) {
         this.page = page;
         this.h1_titulo = this.page.locator("xpath=//h1[text()='Tools & techniques that elevate teams to greatness']")
@@ -15,13 +20,15 @@ export class CucumberPage {
 
     }
 
+
+    //metodos 
     async validarTituloPaginaPrincipal() {
 
         await expect(this.h1_titulo).toBeVisible();
     }
 
-    async buscoSeccionDocs(docs: string) {
-        const linkDocs = await this.page.locator("xpath=//a[text()='" + docs + "']")
+    async buscoSeccionDocs(seccionDocs: string) {
+        const linkDocs = await this.page.locator("xpath=//a[text()='" + seccionDocs + "']")
         await expect(linkDocs).toBeVisible();
         await linkDocs.click();
         await expect(this.link_api_docs).toBeVisible();
@@ -34,3 +41,4 @@ export class CucumberPage {
     }
 
 }
+
